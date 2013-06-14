@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Websocket Demo</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/css/bootstrap-responsive.min.css" />
+	<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="span6">
+				<h2>Type in your name below to get your Ninja Name!</h2>
+				<form>
+					<input type="text" class="input-block-level" placeholder="First Name" name="firstName" />
+					<input type="text" class="input-block-level" placeholder="Last Name" name="lastName" />
+					<button class="btn btn-large btn-primary" type="submit">Get name!</button>
+					<div id="name"><h3></h3></div>
+				</form>
+			</div>
+			<div class="span6">
+				<div id="log">
+					<h4>WebSocket Log</h4>
+					<ul></ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/NotificationCenter.js"></script>
+	<script type="text/javascript" src="assets/js/EventHandler.js"></script>
+	<script type="text/javascript" src="assets/js/NameSearchedEventHandler.js"></script>
+	<script type="text/javascript" src="assets/js/PostResponseEventHandler.js"></script>
+	<script type="text/javascript" src="assets/js/init_websocket.js"></script>
+</body>
+</html>
