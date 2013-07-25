@@ -10,7 +10,9 @@ $(function() {
 	
 	var log = $("#log ul");
 
-	var url = window.location.pathname.replace("sockjs.html", "sockjs/connector");
+	var url = (window.location.pathname.indexOf("index.html") == -1) ?
+			window.location.pathname + "/sockjs/connector" :
+			window.location.pathname.replace("index.html", "sockjs/connector");
 	
 	function setupWs() {
 		ws = new SockJS(url, undefined, {protocols_whitelist: [transport]});
