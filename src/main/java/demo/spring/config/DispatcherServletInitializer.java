@@ -16,24 +16,14 @@
 
 package demo.spring.config;
 
-import org.springframework.util.ClassUtils;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class DispatcherServletInitializer extends
 		AbstractAnnotationConfigDispatcherServletInitializer {
 
-	private static final boolean standardWebSocketPresent = ClassUtils
-			.isPresent("javax.websocket.Endpoint",
-					DispatcherServletInitializer.class.getClassLoader());
-
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		if (standardWebSocketPresent) {
-			return new Class<?>[] { ServiceConfig.class, WebConfig.class };
-		} else {
-			throw new IllegalArgumentException(
-					"javax.websocket.Endpoint needs to be present");
-		}
+		return new Class<?>[] { ServiceConfig.class, WebConfig.class };
 	}
 
 	@Override
