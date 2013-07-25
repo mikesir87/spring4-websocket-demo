@@ -12,17 +12,17 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>4.0.0.M2</version>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-websocket</artifactId>
-			<version>4.0.0.M2</version>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-messaging</artifactId>
-			<version>4.0.0.M2</version>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -64,7 +64,7 @@
 	</dependencies>
 
 	<properties>
-		<spring.version>4.0.0M1</spring.version>
+		<spring.version>4.0.0.M2</spring.version>
 	</properties>
 
 	<build>
