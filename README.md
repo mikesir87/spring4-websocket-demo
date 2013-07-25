@@ -1,4 +1,4 @@
-# Spring 4.0.0M1 Websocket Demo
+# Spring 4.0.0M2 Websocket Demo
 
 This is a demo of using WebSockets and SockJS in a simple web application.
 
