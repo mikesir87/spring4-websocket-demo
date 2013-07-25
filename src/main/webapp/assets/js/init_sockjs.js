@@ -24,7 +24,7 @@ $(function() {
 		};
 		ws.onclose = function() {
 			log.append("<li>SockJS connection closed</li>");
-		}
+		};
 	}
 	
 	setupTransport = function(newTransport) {
@@ -33,11 +33,11 @@ $(function() {
 			ws.close();
 		}
 		setupWs();
-	}
+	};
 	
 	setupWs();
 
-	$("form").click(function() {
+	$("form").submit(function() {
 		var firstName = $("input[name='firstName']").val();
 		var lastName = $("input[name='lastName']").val();
 		$.ajax({
