@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sign in &middot; Name Service</title>
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+  	<div class="row">
+  		<div class="span4 offset4">
+		    <div id="error" class="alert alert-error">
+		      Invalid username/password.
+		    </div>
+		    <form class="form-signin" method="post" action="login.html">
+		      <h3 class="muted form-signin-heading">Please sign in</h3>
+		      <input type="text" class="input-block-level" placeholder="User name" name="username">
+		      <button class="btn btn-primary" type="submit">Sign in</button>
+		      <hr>
+		      <p class="text-info"><small>You can enter any username</small></p>
+		    </form>
+		</div>
+	</div>
+  </div><!-- /container -->
+
+  <script src="//code.jquery.com/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    var query = window.location.search;
+    if (query && (query.indexOf('error') != -1)) {
+    	$("#error").show();
+    } else {
+    	$("#error").hide();
+    }
+  </script>
+
+</body>
+</html>

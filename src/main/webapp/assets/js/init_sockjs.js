@@ -14,11 +14,20 @@ $(function() {
 		ws = new SockJS(url);
 		stompClient = Stomp.over(ws);
 		stompClient.connect('', '', function(frame) {
+			var userName = frame.headers['user-name'];
+			var queueSuffix = frame.headers['queue-suffix'];
+
 			log.append("<li>STOMP connection established</li>");
+			log.append("<li>Username: " + userName + "</li>");
 			stompClient.subscribe('/topic/names.posted.*', function(message) {
 				var details = JSON.parse(message.body);
 				log.append("<li>" + details.firstName + " " + details.lastName 
 						+ " has a " + details.nameType + " name of " 
+						+ details.newName + "</li>");
+			});
+			stompClient.subscribe('/queue/names.response' + queueSuffix, function(message) {
+				var details = JSON.parse(message.body);
+				log.append("<li>Your " + details.nameType + " name is " 
 						+ details.newName + "</li>");
 			});
 		}, function(error) {

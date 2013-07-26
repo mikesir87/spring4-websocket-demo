@@ -24,6 +24,21 @@
 			<artifactId>spring-messaging</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
 		
 		<dependency>
 			<groupId>org.projectreactor</groupId>
@@ -77,6 +92,7 @@
 
 	<properties>
 		<spring.version>4.0.0.M2</spring.version>
+		<spring-security.version>3.2.0.M2</spring-security.version>
 	</properties>
 
 	<build>

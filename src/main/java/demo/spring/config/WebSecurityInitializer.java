@@ -13,27 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package demo.spring.config;
 
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
-public class DispatcherServletInitializer extends
-		AbstractAnnotationConfigDispatcherServletInitializer {
-
-	@Override
-	protected Class<?>[] getRootConfigClasses() {
-		return new Class<?>[] { WebSecurityConfig.class };
-	}
-	
-	@Override
-	protected Class<?>[] getServletConfigClasses() {
-		return new Class<?>[] { ServiceConfig.class, WebConfig.class };
-	}
-
-	@Override
-	protected String[] getServletMappings() {
-		return new String[] { "/" };
-	}
+/**
+ * @author Rob Winch
+ *
+ */
+public class WebSecurityInitializer extends
+		AbstractSecurityWebApplicationInitializer {
 
 }
