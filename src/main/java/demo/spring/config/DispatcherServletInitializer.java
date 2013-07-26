@@ -23,12 +23,12 @@ public class DispatcherServletInitializer extends
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class<?>[] { ServiceConfig.class, WebConfig.class };
+		return null;
 	}
-
+	
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class<?>[] { WebConfig.class };
+		return new Class<?>[] { ServiceConfig.class, WebConfig.class };
 	}
 
 	@Override

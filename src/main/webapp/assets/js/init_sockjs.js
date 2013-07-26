@@ -1,56 +1,39 @@
-var ws;
+var ws, stompClient;
 var transport = 'websocket';
 var setupTransport;
 
 $(function() {
 	
-	var notificationCenter = new NotificationCenter();
-	notificationCenter.addEventHandler(new NameSearchedEventHandler());
-	notificationCenter.addEventHandler(new PostResponseEventHandler());
-	
 	var log = $("#log ul");
 
 	var url = (window.location.pathname.indexOf("index.html") == -1) ?
-			window.location.pathname + "/sockjs/connector" :
-			window.location.pathname.replace("index.html", "sockjs/connector");
+			window.location.pathname + "/name" :
+			window.location.pathname.replace("index.html", "name");
 	
 	function setupWs() {
-		ws = new SockJS(url, undefined, {protocols_whitelist: [transport]});
-		
-		ws.onopen = function() {
-			log.append("<li>SockJS initiated using [" + this.protocol + "]</li>");
-		};
-		ws.onmessage = function(evt) {
-			var data = $.parseJSON(evt.data);
-			notificationCenter.handleMessage(data); 
-		};
-		ws.onclose = function() {
-			log.append("<li>SockJS connection closed</li>");
-		};
+		ws = new SockJS(url);
+		stompClient = Stomp.over(ws);
+		stompClient.connect('', '', function(frame) {
+			log.append("<li>STOMP connection established</li>");
+			stompClient.subscribe('/topic/names.posted.*', function(message) {
+				var details = JSON.parse(message.body);
+				log.append("<li>" + details.firstName + " " + details.lastName 
+						+ " has a " + details.nameType + " name of " 
+						+ details.newName + "</li>");
+			});
+		}, function(error) {
+			log.append("<li>STOMP ERROR: " + error + "</li>");
+		});
 	}
-	
-	setupTransport = function(newTransport) {
-		transport = newTransport;
-		if (ws != null && ws.readyState == 1) {
-			ws.close();
-		}
-		setupWs();
-	};
-	
+		
 	setupWs();
 
 	$("form").submit(function() {
-		var firstName = $("input[name='firstName']").val();
-		var lastName = $("input[name='lastName']").val();
-		$.ajax({
-			url: "name",
-			data: "firstName=" + firstName + "&lastName=" + lastName,
-			type: "POST",
-			dataType: "json",
-			success: function(data) {
-				notificationCenter.handleMessage(data);
-			}
-		});
+		var request = {
+			firstName: $("input[name='firstName']").val(),
+			lastName: $("input[name='lastName']").val()
+		};
+		stompClient.send('/app/getName', {}, JSON.stringify(request));
 		return false;
 	});
 });

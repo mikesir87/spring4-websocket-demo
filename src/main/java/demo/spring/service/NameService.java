@@ -1,7 +1,11 @@
 package demo.spring.service;
 
+import demo.spring.NameLookup;
+
 public interface NameService {
 
-	String getName(String firstName, String lastName);
+	public static final String NAME_POSTED_TOPIC = "/topic/names.posted";
+	
+	NameLookup getName(String firstName, String lastName);
 	
 }

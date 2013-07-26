@@ -20,15 +20,6 @@
 			</div>
 			<div class="span6">
 				<div id="log">
-					<span>Select transport:</span>
-		            <select onchange="setupTransport(this.value)">
-			            <option value="websocket">websocket</option>
-			            <option value="xhr-polling">xhr-polling</option>
-			            <option value="jsonp-polling">jsonp-polling</option>
-			            <option value="xhr-streaming">xhr-streaming</option>
-			            <option value="iframe-eventsource">iframe-eventsource</option>
-			            <option value="iframe-htmlfile">iframe-htmlfile</option>
-	            	</select>
 					<h4>SockJS Log</h4>
 					<ul></ul>
 				</div>
@@ -39,10 +30,7 @@
 	<script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
 	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/js/sockjs.min.js"></script>
-	<script type="text/javascript" src="assets/js/NotificationCenter.js"></script>
-	<script type="text/javascript" src="assets/js/EventHandler.js"></script>
-	<script type="text/javascript" src="assets/js/NameSearchedEventHandler.js"></script>
-	<script type="text/javascript" src="assets/js/PostResponseEventHandler.js"></script>
+	<script type="text/javascript" src="assets/js/stomp.js"></script>
 	<script type="text/javascript" src="assets/js/init_sockjs.js"></script>
 </body>
 </html>

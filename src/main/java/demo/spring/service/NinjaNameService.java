@@ -14,8 +14,13 @@ public class NinjaNameService extends AbstractNameService {
 		sounds = new HashMap<String, String>();
 		populateSounds();
 	}
+	
+	@Override
+	public String getNameType() {
+		return "ninja";
+	}
 
-	public String doGetName(String firstName, String lastName) {
+	protected String doGetName(String firstName, String lastName) {
 		StringBuilder sb = new StringBuilder();
 		String adjFirstName = firstName.toUpperCase();
 
